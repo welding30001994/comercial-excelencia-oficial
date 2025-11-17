@@ -2635,11 +2635,11 @@
             });
 
             mensaje += `💰 *TOTAL: $${total.toFixed(2)}* 💰\n\n`;
-            mensaje += `📞 *Contacto: 0986122265*`;
+            mensaje += `📞 *Contacto: +593986122265*`;
 
             // Codificar mensaje para URL
             const mensajeCodificado = encodeURIComponent(mensaje);
-            const numeroWhatsApp = "0986122265";
+            const numeroWhatsApp = "+593986122265";
             
             // Crear URL de WhatsApp
             const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`;
@@ -2706,4 +2706,5 @@
         console.log(`✅ Base de datos cargada: ${Object.keys(productos).length} productos disponibles`);
     </script>
 </body>
+
 </html>

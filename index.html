@@ -535,7 +535,7 @@
     <script>
         // Base de datos de productos (sin duplicados)
         const productos = {
-
+  
              "6852345547511": { nombre: "AM HIGH QUALITY MOSQUITO NET. MOSQUITERO", rgn1: 10.00, rgn2: 8.33 },
             "7861038062483": { nombre: "ANTIBACTERIANTE", rgn1: 2.10, rgn2: 1.75 },
             "6202110243207": { nombre: "KIT PARA BEBE ACCESORIO HOGAR AM", rgn1: 1.60, rgn2: 1.00 },
@@ -2722,21 +2722,32 @@
                 return;
             }
 
-            let mensaje = "📋 *PEDIDO DE PRODUCTOS* 📋\n\n";
+            let mensaje = "🛒 *NUEVO PEDIDO* 🛒\n\n";
+            mensaje += "Hola, tengo un nuevo pedido:\n\n";
+            mensaje += "📋 *DETALLE DEL PEDIDO:*\n\n";
+
             let total = 0;
+            let numeroItem = 1;
 
             carrito.forEach(item => {
                 const subtotal = item.precio * item.cantidad;
                 total += subtotal;
-                mensaje += `➡️ ${item.nombre}\n`;
-                mensaje += `   Código: ${item.codigo}\n`;
-                mensaje += `   Precio ${item.tipo === 'venta' ? 'Venta' : 'Mayor'}: $${item.precio.toFixed(2)} c/u\n`;
-                mensaje += `   Cantidad: ${item.cantidad}\n`;
-                mensaje += `   Subtotal: $${subtotal.toFixed(2)}\n\n`;
+                
+                mensaje += `*${numeroItem}. ${item.nombre}*\n`;
+                mensaje += `   📦 Código: ${item.codigo}\n`;
+                mensaje += `   🔢 Cantidad: ${item.cantidad}\n`;
+                mensaje += `   💰 Precio unitario: $${item.precio.toFixed(2)}\n`;
+                mensaje += `   🧮 Subtotal: $${subtotal.toFixed(2)}\n\n`;
+                
+                numeroItem++;
             });
 
-            mensaje += `💰 *TOTAL: $${total.toFixed(2)}* 💰\n\n`;
-            mensaje += `📞 *Contacto: +593 98 612 2265*`;
+            mensaje += "━━━━━━━━━━━━━━━━\n";
+            mensaje += `💰 *TOTAL DEL PEDIDO: $${total.toFixed(2)}*\n`;
+            mensaje += "━━━━━━━━━━━━━━━━\n\n";
+            mensaje += "📞 Cliente espera confirmación\n";
+            mensaje += "⏰ Por favor confirmar disponibilidad\n\n";
+            mensaje += "¡Gracias! 🙏";
 
             // Codificar mensaje para URL
             const mensajeCodificado = encodeURIComponent(mensaje);
